@@ -1,0 +1,95 @@
+/****** tag selectors ****/
+body {
+    background-color: #F7F6DC;
+}
+
+header {
+    border: 8px dotted #7FB77E;
+    border-bottom-style: none;
+    width: 10%;
+}
+
+footer {
+    width:100%;
+    height:30px;
+    background-color: #FFC090;
+    padding:10px;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    padding-block: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: white;
+}
+
+img:hover {
+    background-color: #FFC090;
+}
+
+h1 {
+    color: #B1D7B4;
+    font-size: 40px;
+}
+
+h3 {
+    color: #FFC090;
+}
+
+/****** class selectors ****/
+/* same style for multiple items */
+.emoji {
+    background-color: #B1D7B4;
+}
+
+.framed {
+    background-color: #FFC090;
+}
+
+/****** id selectors ****/
+/* specific style for a single item */
+#container {
+    max-width:1000px;
+    margin: 0 auto;
+}
+
+#container a {
+    /* for links in the container */
+    color:#FFC090;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+#header {
+    width:100%;
+    background-color: #7FB77E;
+    height:100px;
+}
+
+#navbar {
+    height:35px;
+    width:100%;
+    background-color: #7FB77E;
+}
+
+#navbar ul {
+    /* for lists in the navigation bar */
+    display:flex;
+    padding:0;
+    margin:0;
+    justify-content:left;
+}
+
+#navbar li {
+    /* for individual list items in navbar */
+    padding-top: 10px;
+}
+
+#navbar li a {
+    /* for navigation links */
+    color:#7FB77E;
+    font-weight: 700;
+    text-decoration:none;
+}
