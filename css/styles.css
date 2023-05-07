@@ -1,6 +1,6 @@
 /****** tag selectors ****/
 body {
-    background-color: #F7F6DC;
+    background-color: white;
 }
 
 header {
@@ -17,8 +17,8 @@ footer {
 }
 
 img {
-    width: 100px;
-    height: 100px;
+    width: 25%;
+    height: 25%;
     padding-block: 15px;
     padding-left: 15px;
     padding-right: 15px;
@@ -30,12 +30,16 @@ img:hover {
 }
 
 h1 {
-    color: #B1D7B4;
+    color: #ff9011;
     font-size: 40px;
 }
 
 h3 {
-    color: #FFC090;
+    color: #ffd45e;
+}
+
+p {
+    color:#6d6eb4;
 }
 
 /****** class selectors ****/
@@ -46,22 +50,6 @@ h3 {
 
 .framed {
     background-color: #FFC090;
-}
-
-.sidebar {
-    height: 100%;
-    width: 150px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    padding-top: 40px;
-    background-color: lightblue;
-}
-
-.sidebar div {
-padding: 8px;
-font-size: 24px;
-display: block;
 }
 
 .body-text {
@@ -92,7 +80,7 @@ font-size: 18px;
 #navbar {
     height:35px;
     width:100%;
-    background-color: #7FB77E;
+    background-color: #e0eff1;
 }
 
 #navbar ul {
@@ -105,7 +93,7 @@ font-size: 18px;
 
 #navbar li {
     /* for individual list items in navbar */
-    padding-top: 10px;
+    padding-top: 40px;
 }
 
 #navbar li a {
