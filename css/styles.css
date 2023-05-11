@@ -31,7 +31,6 @@ img:hover {
 
 h1 {
     color: #ff9011;
-    font-size: 40px;
 }
 
 h3 {
@@ -42,58 +41,93 @@ p {
     color:#6d6eb4;
 }
 
-/****** class selectors ****/
-/* same style for multiple items */
-.emoji {
-    background-color: #B1D7B4;
+li {
+    display:inline-block;
 }
 
+/****** class selectors ****/
+/* same style for multiple items */
 .framed {
     background-color: #FFC090;
 }
 
 .body-text {
-margin-left: 150px;
-font-size: 18px;
+    margin-left: 150px;
+    font-size: 18px;
+}
+
+/* .container-padding {
+    padding:40px;
+} */
+
+.content {
+    width:50%;
+    margin-left:25%;
 }
 
 /****** id selectors ****/
 /* specific style for a single item */
 #container {
-    max-width:1000px;
-    margin: 0 auto;
+    width:900px;
+    margin:0 auto;
+    padding:40%;
 }
 
 #container a {
     /* for links in the container */
     color:#FFC090;
     font-weight:bold;
-    text-decoration:none;
 }
+
+/* #sidebar {
+    width:200px;
+    background-color: #eaf5f2;
+    padding:10px;
+    border: 2px dotted #7FB77E;
+    margin-left:10%;
+}
+
+#sidebar ul {
+    padding:10px 30px 10px 40px;
+    color:#7FB77E;
+}
+
+#sidebar li a {
+    color:#7FB77E;
+}
+
+#sidebar li a:hover {
+    text-decoration: none;
+    color: #ffd45e;
+} */
 
 #header {
     width:100%;
     background-color: #7FB77E;
-    height:100px;
+    height:150px;
+    text-align: center;
+    border: 2px dotted #7FB77E;
 }
 
 #navbar {
-    height:35px;
+    height:40px;
     width:100%;
-    background-color: #e0eff1;
+    background-color: #d9f0d8;
 }
 
 #navbar ul {
     /* for lists in the navigation bar */
-    display:flex;
-    padding:0;
-    margin:0;
-    justify-content:left;
+    color:white;
+    list-style-type: none;
+    font-variant: small-caps;
+    justify-content: space-evenly;
+    overflow: auto;
+    padding:5px;
 }
 
 #navbar li {
     /* for individual list items in navbar */
-    padding-top: 40px;
+    padding:5px;
 }
 
 #navbar li a {
@@ -101,5 +135,12 @@ font-size: 18px;
     color:#7FB77E;
     font-weight: 700;
     text-decoration:none;
+}
+
+#navbar li a:hover {
+    /* for navigation links */
+    color:#7FB77E;
+    font-weight: 700;
+    text-decoration:underline;
 }
 
