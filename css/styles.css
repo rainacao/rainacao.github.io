@@ -1,6 +1,7 @@
 /****** tag selectors ****/
 body {
     background-color: white;
+    font-family: 'Open Sans', sans-serif;
 }
 
 header {
@@ -61,16 +62,16 @@ li {
 } */
 
 .content {
-    width:50%;
-    margin-left:25%;
+    max-width:700px;
+    margin-left:200px;
 }
 
 /****** id selectors ****/
 /* specific style for a single item */
 #container {
-    width:900px;
+    max-width:900px;
     margin:0 auto;
-    padding:40%;
+    padding:40px
 }
 
 #container a {
@@ -78,28 +79,6 @@ li {
     color:#FFC090;
     font-weight:bold;
 }
-
-/* #sidebar {
-    width:200px;
-    background-color: #eaf5f2;
-    padding:10px;
-    border: 2px dotted #7FB77E;
-    margin-left:10%;
-}
-
-#sidebar ul {
-    padding:10px 30px 10px 40px;
-    color:#7FB77E;
-}
-
-#sidebar li a {
-    color:#7FB77E;
-}
-
-#sidebar li a:hover {
-    text-decoration: none;
-    color: #ffd45e;
-} */
 
 #header {
     width:100%;
@@ -119,7 +98,6 @@ li {
     /* for lists in the navigation bar */
     color:white;
     list-style-type: none;
-    font-variant: small-caps;
     justify-content: space-evenly;
     overflow: auto;
     padding:5px;
