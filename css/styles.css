@@ -32,6 +32,7 @@ img:hover {
 
 h1 {
     color: #ff9011;
+    font-family: 'Lexend Deca', sans-serif;
 }
 
 h3 {
@@ -40,6 +41,7 @@ h3 {
 
 p {
     color:#6d6eb4;
+    
 }
 
 li {
@@ -61,9 +63,13 @@ li {
     padding:40px;
 } */
 
-.content {
+.content-container {
     max-width:700px;
-    margin-left:200px;
+    display:flex;
+}
+
+.content {
+    flex: 2 2 auto;
 }
 
 /****** id selectors ****/
@@ -71,7 +77,7 @@ li {
 #container {
     max-width:900px;
     margin:0 auto;
-    padding:40px
+    padding: 40px;
 }
 
 #container a {
@@ -122,3 +128,10 @@ li {
     text-decoration:underline;
 }
 
+#sidebar {
+    height:auto;
+    background-color: #fff2c8;
+    flex: 1 1 auto;
+    color: #FFC090;
+    padding: 10px;
+}
