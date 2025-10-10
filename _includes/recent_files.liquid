@@ -1,0 +1,182 @@
+<div class="news" style="margin-bottom: 0;">
+  {% if page.recent_files != blank %}
+    {% assign recent_files = site.posts | concat: site.projects | concat: site.pages | where_exp: "item", "item.nav != false" | sort: "date" | reverse %}
+    {% if page.recent_files.limit %}
+      {% assign recent_files_limit = page.recent_files.limit %}
+    {% else %}
+      {% assign recent_files_limit = 10 %}
+    {% endif %}
+    
+    {% assign grouped_files = '' | split: ',' %}
+    {% assign current_date = '' %}
+    {% assign date_group = '' | split: ',' %}
+    
+    {% for item in recent_files limit: recent_files_limit %}
+      {% assign item_date = item.date | date: '%Y-%m-%d' %}
+      {% if current_date == '' or current_date == item_date %}
+        {% assign date_group = date_group | push: item %}
+        {% assign current_date = item_date %}
+      {% else %}
+        {% assign grouped_files = grouped_files | push: date_group %}
+        {% assign date_group = '' | split: ',' | push: item %}
+        {% assign current_date = item_date %}
+      {% endif %}
+    {% endfor %}
+    {% if date_group.size > 0 %}
+      {% assign grouped_files = grouped_files | push: date_group %}
+    {% endif %}
+    
+    <div class="table-responsive" style="margin: 0;">
+      <table class="table table-sm table-borderless" style="margin-bottom: 0;">
+        {% for date_group in grouped_files limit: 5 %}
+          {% assign date_string = date_group.first.date | date: '%b %d, %Y' %}
+          {% assign group_id = date_group.first.date | date: '%Y%m%d' %}
+          
+          <tr>
+            <th scope="row" style="width: 20%; padding: 0.25rem 0.5rem; vertical-align: top;">{{ date_string }}</th>
+            <td style="padding: 0.25rem 0.5rem;">
+              {% if date_group.size <= 1 %}
+                <!-- Show all files if 1 or fewer -->
+                {% for item in date_group %}
+                  <div class="mb-1">
+                    {% if item.redirect == blank %}
+                      <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                    {% elsif item.redirect contains '://' %}
+                      <a class="news-title" href="{{ item.redirect }}" target="_blank">{{ item.title }}</a>
+                      <svg width="1rem" height="1rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" style="margin-left: 0.25rem;">
+                        <path
+                          d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9"
+                          class="icon_svg-stroke"
+                          stroke="#999"
+                          stroke-width="1.5"
+                          fill="none"
+                          fill-rule="evenodd"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                      </svg>
+                    {% else %}
+                      <a class="news-title" href="{{ item.redirect | relative_url }}">{{ item.title }}</a>
+                    {% endif %}
+                    <small class="text-muted d-block">
+                      {% if item.collection == 'posts' %}
+                        <i class="fa-solid fa-blog"></i> Blog
+                      {% elsif item.collection == 'projects' %}
+                        <i class="fa-solid fa-folder"></i> Project
+                      {% elsif item.layout == 'cv' %}
+                        <i class="fa-solid fa-file-alt"></i> CV
+                      {% else %}
+                        <i class="fa-solid fa-file"></i> Page
+                      {% endif %}
+                    </small>
+                  </div>
+                {% endfor %}
+              {% else %}
+                <!-- Show first 1 files, then collapsible -->
+                {% for item in date_group limit: 1 %}
+                  <div class="mb-1">
+                    {% if item.redirect == blank %}
+                      <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                    {% elsif item.redirect contains '://' %}
+                      <a class="news-title" href="{{ item.redirect }}" target="_blank">{{ item.title }}</a>
+                      <svg width="1rem" height="1rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" style="margin-left: 0.25rem;">
+                        <path
+                          d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9"
+                          class="icon_svg-stroke"
+                          stroke="#999"
+                          stroke-width="1.5"
+                          fill="none"
+                          fill-rule="evenodd"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                      </svg>
+                    {% else %}
+                      <a class="news-title" href="{{ item.redirect | relative_url }}">{{ item.title }}</a>
+                    {% endif %}
+                    <small class="text-muted d-block">
+                      {% if item.collection == 'posts' %}
+                        <i class="fa-solid fa-blog"></i> Blog
+                      {% elsif item.collection == 'projects' %}
+                        <i class="fa-solid fa-folder"></i> Project
+                      {% elsif item.layout == 'cv' %}
+                        <i class="fa-solid fa-file-alt"></i> CV
+                      {% else %}
+                        <i class="fa-solid fa-file"></i> Page
+                      {% endif %}
+                    </small>
+                  </div>
+                {% endfor %}
+                
+                <!-- Collapsible section for remaining files -->
+                <div class="collapse-files" id="collapse-{{ group_id }}" style="display: none;">
+                  {% for item in date_group offset: 1 %}
+                    <div class="mb-1">
+                      {% if item.redirect == blank %}
+                        <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                      {% elsif item.redirect contains '://' %}
+                        <a class="news-title" href="{{ item.redirect }}" target="_blank">{{ item.title }}</a>
+                        <svg width="1rem" height="1rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" style="margin-left: 0.25rem;">
+                          <path
+                            d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9"
+                            class="icon_svg-stroke"
+                            stroke="#999"
+                            stroke-width="1.5"
+                            fill="none"
+                            fill-rule="evenodd"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          ></path>
+                        </svg>
+                      {% else %}
+                        <a class="news-title" href="{{ item.redirect | relative_url }}">{{ item.title }}</a>
+                      {% endif %}
+                      <small class="text-muted d-block">
+                        {% if item.collection == 'posts' %}
+                          <i class="fa-solid fa-blog"></i> Blog
+                        {% elsif item.collection == 'projects' %}
+                          <i class="fa-solid fa-folder"></i> Project
+                        {% elsif item.layout == 'cv' %}
+                          <i class="fa-solid fa-file-alt"></i> CV
+                        {% else %}
+                          <i class="fa-solid fa-file"></i> Page
+                        {% endif %}
+                      </small>
+                    </div>
+                  {% endfor %}
+                </div>
+                
+                <!-- Toggle button -->
+                <button class="btn btn-sm btn-link p-0" type="button" onclick="toggleFiles('{{ group_id }}')" style="font-size: 0.8rem; text-decoration: none;">
+                  <i class="fa-solid fa-chevron-down" id="icon-{{ group_id }}"></i> 
+                  <span id="text-{{ group_id }}">Show {{ date_group.size | minus: 1 }} more</span>
+                </button>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+    
+    <script>
+    function toggleFiles(groupId) {
+      const collapse = document.getElementById('collapse-' + groupId);
+      const icon = document.getElementById('icon-' + groupId);
+      const text = document.getElementById('text-' + groupId);
+      
+      if (collapse.style.display === 'none' || collapse.style.display === '') {
+        collapse.style.display = 'block';
+        icon.className = 'fa-solid fa-chevron-up';
+        text.textContent = 'Show less';
+      } else {
+        collapse.style.display = 'none';
+        icon.className = 'fa-solid fa-chevron-down';
+        const remainingCount = collapse.children.length;
+        text.textContent = 'Show ' + remainingCount + ' more';
+      }
+    }
+    </script>
+  {% else %}
+    <p style="margin-bottom: 0;">No recent files...</p>
+  {% endif %}
+</div>
