@@ -9,4 +9,6 @@ collection: books
 
 ## past and present reads
 Currently under construction.
-![Drawing of a penguin with a hard hat.](assets/img/IMG_1787.jpg)
+<!-- ![Drawing of a penguin with a hard hat.](assets/img/IMG_1787.jpg) -->
+
+<img src="{{site.baseurl}}/assets/img/IMG_1787.jpg">
