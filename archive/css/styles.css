@@ -1,7 +1,12 @@
 /****** tag selectors ****/
-body {
+/* body {
     background-color: white;
     font-family: 'Open Sans', sans-serif;
+} */
+
+body {
+    background-color: white;
+    font-family: 'Alegreya', 'Open Sans', sans-serif;
 }
 
 header {
@@ -32,7 +37,8 @@ img:hover {
 
 h1 {
     color: #ff9011;
-    font-family: 'Lexend Deca', sans-serif;
+    /* font-family: 'Lexend Deca', sans-serif; */
+    font-family: 'Alegreya', 'Open Sans', sans-serif;
 }
 
 h3 {

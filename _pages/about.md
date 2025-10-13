@@ -2,18 +2,15 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>University of British Columbia</a>. 
+subtitle: <a href="#">welcome...</a>
 
 profile:
-  align: right
-  image: prof_pic.jpg
+  align: left
+  image: cafe_pic.png
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
 
-selected_papers: false # includes a list of papers marked as "selected={true}"
+selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 
 # announcements:
@@ -26,10 +23,19 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 
+current_reads:
+  enabled: false
+  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
+  limit: 3 # leave blank to include all the blog posts
+
 # recent_files:
 #   enabled: true
 #   scrollable: true # adds a vertical scroll bar if there are more than 3 items
 #   limit: 5 # leave blank to include all recent files
 ---
 
-Welcome to my website!
+Nice to meet you! My name is Raina Cao and this is my workspace. I am an artist and researcher interested in **Human-Computer Interaction**, **Augmented Reality**, and **Generative AI**. I am at heart a creator, in various flavors and combinations of programming, writing, drawing, and occasionally fiber-crafting. 
+
+I'm interested in how artificial intelligence can support human intelligence.
+
+In my free time, I like to read, visit birding spots, and spend time with loved ones.
