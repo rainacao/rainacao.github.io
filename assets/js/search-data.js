@@ -9,7 +9,14 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-cv",
+  },{id: "nav-portfolio",
+          title: "portfolio",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/portfolio/";
+          },
+        },{id: "nav-cv",
           title: "cv",
           description: "curriculum vitae",
           section: "Navigation",
@@ -44,7 +51,18 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/books/";
               },
-            },{id: "post-my-test-post",
+            },{id: "post-creating-art-from-digital-dreams",
+        
+          title: "Creating Art from Digital Dreams",
+        
+        description: "A behind-the-scenes look at how I created my latest digital artwork and the process of integrating it into my portfolio.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/art-integration-example/";
+          
+        },
+      },{id: "post-my-test-post",
         
           title: "my test post",
         
@@ -55,7 +73,32 @@ ninja.data = [{
             window.location.href = "/blog/2025/testing/";
           
         },
-      },{id: "news-",
+      },{id: "art-drawing",
+          title: 'Drawing',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/portfolio/example-artwork-copy-2/";
+            },},{id: "art-drawing",
+          title: 'Drawing',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/portfolio/example-artwork-copy-3/";
+            },},{id: "art-drawing",
+          title: 'Drawing',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/portfolio/example-artwork-copy-4/";
+            },},{id: "art-drawing",
+          title: 'Drawing',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/portfolio/example-artwork-copy/";
+            },},{id: "books-seven-nights",
+          title: 'Seven Nights',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/seven-nights_borges/";
+            },},{id: "news-",
           title: '',
           description: "",
           section: "News",},{
@@ -86,30 +129,4 @@ ninja.data = [{
         handler: () => {
           window.open("https://scholar.google.com/citations?user=QpUCG6AAAAAJ", "_blank");
         },
-      },{
-      id: 'light-theme',
-      title: 'Change theme to light',
-      description: 'Change the theme of the site to Light',
-      section: 'Theme',
-      handler: () => {
-        setThemeSetting("light");
-      },
-    },
-    {
-      id: 'dark-theme',
-      title: 'Change theme to dark',
-      description: 'Change the theme of the site to Dark',
-      section: 'Theme',
-      handler: () => {
-        setThemeSetting("dark");
-      },
-    },
-    {
-      id: 'system-theme',
-      title: 'Use system default theme',
-      description: 'Change the theme of the site to System Default',
-      section: 'Theme',
-      handler: () => {
-        setThemeSetting("system");
-      },
-    },];
+      },];
