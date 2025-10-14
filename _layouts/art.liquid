@@ -158,21 +158,13 @@ layout: default
       {% endif %}
     {% endfor %}
 
-    {% if prev_art %}
-      <a href="{{ prev_art.url | relative_url }}" class="artwork-nav-prev">
-        <i class="fa-solid fa-arrow-left"></i> Previous: {{ prev_art.title }}
-      </a>
-    {% endif %}
+    
 
     <a href="{{ '/portfolio/' | relative_url }}" class="artwork-nav-back">
       <i class="fa-solid fa-th"></i> Back to Portfolio
     </a>
 
-    {% if next_art %}
-      <a href="{{ next_art.url | relative_url }}" class="artwork-nav-next">
-        Next: {{ next_art.title }} <i class="fa-solid fa-arrow-right"></i>
-      </a>
-    {% endif %}
+    
   </div>
 
   {% if site.giscus and page.giscus_comments %}
