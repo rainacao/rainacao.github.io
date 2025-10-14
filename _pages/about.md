@@ -8,7 +8,7 @@ profile:
   align: left
   image: cafe_pic.png
   image_circular: false # crops the image to make it circular
-  more_info: >
+  more_info: 
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
@@ -41,4 +41,4 @@ I'm interested in how artificial intelligence can support human intelligence.
 
 In my free time, I like to read, visit birding spots, and spend time with loved ones.
 
-[^yutong]: 雨 yǔ (rain) + 童 tóng (child). My given name carries the story of my arrival to the world on a rainy night. It also embodies my parents' wish for me to carry a childlike sense of curiosity and wonder throughout my life, which I strive to embody.
+[^yutong]: 雨 yǔ (rain) + 童 tóng (child). My given name carries the story of my arrival to the world on a rainy night. It also embodies my parents' wish for me to carry a childlike sense of curiosity and wonder throughout my life, which I strive to live up to.

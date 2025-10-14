@@ -411,14 +411,14 @@ ul.task-list input[type="checkbox"] {
 .social {
   text-align: center;
 
-  .contact-icons {
-    font-size: 1rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    justify-items: center;
-    max-width: 400px;
-    margin: 0 auto;
+    .contact-icons {
+      font-size: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      justify-items: center;
+      max-width: 400px;
+      margin: 0 auto;
 
     .social-link {
       display: inline-flex;
@@ -427,7 +427,7 @@ ul.task-list input[type="checkbox"] {
       text-decoration: none;
       
       .social-text {
-        // margin-left: 0.5rem;
+        margin-left: 0.5rem;
         font-size: 0.9rem;
         color: var(--global-text-color);
       }
@@ -482,12 +482,14 @@ ul.task-list input[type="checkbox"] {
 .footnotes {
   margin-top: 3rem;
   padding-top: 2rem;
-  margin-left: 1.5rem;
-  // border-top: 2px solid var(--global-text-color);
+  clear: both;
+  // margin-left: 1.5rem !important;
+  // padding-left: 0rem !important;
+  // border-top: 2px solid var(--global-divider-color);
   // border-top-style: dashed;
   
   &::before {
-    content: "Notes";
+    content: "notes";
     display: block;
     font-weight: bold;
     font-size: 1rem;
@@ -496,8 +498,8 @@ ul.task-list input[type="checkbox"] {
   }
   
   ol {
-    margin-left: 0rem;
-    padding-left: 2rem;
+    // margin-left: 5rem;
+    // padding-left: 0rem;
     
     li {
       margin-bottom: 0.8rem;

@@ -1,0 +1,89 @@
+{% assign art_id = include.image | slugify %}
+{% assign art_title = include.title | default: include.image | basename %}
+{% assign art_year = include.year | default: page.date | date: '%Y' %}
+{% assign art_medium = include.medium | default: 'Digital Art' %}
+{% assign art_tags = include.tags | split: ',' %}
+{% assign art_description = include.description | default: '' %}
+{% assign art_category = include.category | default: 'Digital Art' %}
+{% assign art_featured = include.featured | default: false %}
+
+<!-- Artwork marker for blog integration -->
+<div class="blog-art-marker" data-art-id="{{ art_id }}">
+  <div class="artwork-preview">
+    {% if include.image %}
+      {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.8}}px, (min-width: 576px) 80vw, 95vw"{% endcapture %}
+      {% include figure.liquid loading="lazy" path=include.image class="blog-art-image" sizes=sizes alt=art_title cache_bust=true avoid_scaling=true %}
+    {% endif %}
+    
+    <div class="artwork-meta-overlay">
+      <div class="artwork-info">
+        <h4 class="artwork-title">{{ art_title }}</h4>
+        <p class="artwork-meta">{{ art_year }} • {{ art_medium }}</p>
+        {% if art_description %}
+          <p class="artwork-description">{{ art_description }}</p>
+        {% endif %}
+        {% if art_tags.size > 0 %}
+          <div class="artwork-tags">
+            {% for tag in art_tags %}
+              <span class="tag">{{ tag | strip }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      <div class="artwork-actions">
+        <a href="{{ '/portfolio/' | relative_url }}" class="btn btn-sm btn-outline-primary">
+          <i class="fa-solid fa-th"></i> View in Portfolio
+        </a>
+        {% if art_featured %}
+          <span class="featured-badge">
+            <i class="fa-solid fa-star"></i> Featured
+          </span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  
+  <!-- Hidden metadata for automatic portfolio integration -->
+  <script type="application/json" class="art-metadata">
+    {
+      "id": "{{ art_id }}",
+      "title": "{{ art_title }}",
+      "image": "{{ include.image }}",
+      "year": "{{ art_year }}",
+      "medium": "{{ art_medium }}",
+      "tags": {{ art_tags | jsonify }},
+      "description": "{{ art_description }}",
+      "category": "{{ art_category }}",
+      "featured": {{ art_featured }},
+      "source_post": "{{ page.url }}",
+      "source_title": "{{ page.title }}"
+    }
+  </script>
+</div>
+
+<!-- Auto-create art collection entry if it doesn't exist -->
+{% unless site.art contains art_id %}
+  {% comment %}
+    This would ideally be handled by a Jekyll plugin or build script
+    For now, we'll just mark it for manual addition to the _art collection
+  {% endcomment %}
+  <div class="art-creation-note" style="display: none;">
+    <p><strong>Note:</strong> To add this artwork to your portfolio, create a file at <code>_art/{{ art_id }}.md</code> with the following front matter:</p>
+    <pre><code>---
+layout: art
+title: "{{ art_title }}"
+image: "{{ include.image }}"
+year: {{ art_year }}
+medium: "{{ art_medium }}"
+description: "{{ art_description }}"
+tags:
+{% for tag in art_tags %}  - {{ tag | strip }}
+{% endfor %}
+category: "{{ art_category }}"
+featured: {{ art_featured }}
+blog_posts:
+  - title: "{{ page.title }}"
+    url: "{{ page.url }}"
+---</code></pre>
+  </div>
+{% endunless %}

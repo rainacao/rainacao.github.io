@@ -1,0 +1,181 @@
+---
+layout: default
+---
+{% assign year = page.date | date: '%Y' %}
+{% assign tags = page.tags | join: '' %}
+{% assign categories = page.categories | join: '' %}
+
+{% if page._styles %}
+  <!-- Page/Post style -->
+  <style type="text/css">
+    {{ page._styles }}
+  </style>
+{% endif %}
+
+<div class="artwork">
+  <header class="artwork-header">
+    <h1 class="artwork-title">{{ page.title }}</h1>
+    <div class="artwork-meta">
+      <p class="artwork-year">
+        <i class="fa-solid fa-calendar fa-sm"></i> {{ page.year | default: year }}
+        {% if page.medium %} • <i class="fa-solid fa-palette fa-sm"></i> {{ page.medium }}{% endif %}
+        {% if page.dimensions %} • <i class="fa-solid fa-expand fa-sm"></i> {{ page.dimensions }}{% endif %}
+      </p>
+      {% if tags != '' %}
+        <p class="artwork-tags">
+          {% for tag in page.tags %}
+            <span class="artwork-tag">
+              <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}
+            </span>
+            {% unless forloop.last %} • {% endunless %}
+          {% endfor %}
+        </p>
+      {% endif %}
+      {% if page.category %}
+        <p class="artwork-category">
+          <i class="fa-solid fa-tag fa-sm"></i> {{ page.category }}
+        </p>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="artwork-content">
+    <!-- Main Artwork Image -->
+    <div class="artwork-image-container">
+      {% if page.image %}
+        {% if page.image contains 'assets/img/' %}
+          {% assign image_path = page.image %}
+        {% else %}
+          {% assign image_path = page.image | prepend: 'assets/img/' %}
+        {% endif %}
+        {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.8}}px, (min-width: 576px) 80vw, 95vw"{% endcapture %}
+        {% include figure.liquid loading="eager" path=image_path class="artwork-main-image" sizes=sizes alt=page.title cache_bust=true avoid_scaling=true %}
+      {% endif %}
+    </div>
+
+    <!-- Artwork Description -->
+    {% if page.description %}
+      <div class="artwork-description">
+        <h2>Description</h2>
+        <p>{{ page.description }}</p>
+      </div>
+    {% endif %}
+
+    <!-- Artwork Details -->
+    <div class="artwork-details">
+      {% if page.techniques %}
+        <div class="artwork-detail-section">
+          <h3><i class="fa-solid fa-tools fa-sm"></i> Techniques</h3>
+          <ul>
+            {% for technique in page.techniques %}
+              <li>{{ technique }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      {% if page.software %}
+        <div class="artwork-detail-section">
+          <h3><i class="fa-solid fa-laptop fa-sm"></i> Software</h3>
+          <ul>
+            {% for software in page.software %}
+              <li>{{ software }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      {% if page.exhibition %}
+        <div class="artwork-detail-section">
+          <h3><i class="fa-solid fa-building fa-sm"></i> Exhibition</h3>
+          {% for exhibition in page.exhibition %}
+            <div class="exhibition-item">
+              <strong>{{ exhibition.name }}</strong><br>
+              {{ exhibition.venue }}, {{ exhibition.location }}<br>
+              <em>{{ exhibition.date | date: '%B %d, %Y' }}</em>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if page.availability %}
+        <div class="artwork-detail-section">
+          <h3><i class="fa-solid fa-info-circle fa-sm"></i> Availability</h3>
+          <p>{{ page.availability }}{% if page.price %} - {{ page.price }}{% endif %}</p>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Related Blog Posts -->
+    {% if page.blog_posts %}
+      <div class="related-blog-posts">
+        <h2>Related blog posts</h2>
+        <ul>
+          {% for post in page.blog_posts %}
+            <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <!-- Related Works -->
+    {% if page.related_works %}
+      <div class="related-works">
+        <h2>Related works</h2>
+        <ul>
+          {% for work in page.related_works %}
+            <li>{{ work.title }} ({{ work.year }})</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <!-- Main Content -->
+    {% if content %}
+      <div class="artwork-main-content">
+        {{ content }}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Navigation -->
+  <div class="artwork-navigation">
+    {% assign sorted_art = site.art | sort: 'year' | reverse %}
+    {% assign prev_art = null %}
+    {% assign next_art = null %}
+    {% assign found_current = false %}
+    
+    {% for art in sorted_art %}
+      {% if found_current and next_art == null %}
+        {% assign next_art = art %}
+        {% break %}
+      {% endif %}
+      
+      {% if art.title == page.title %}
+        {% assign found_current = true %}
+      {% elsif found_current == false %}
+        {% assign prev_art = art %}
+      {% endif %}
+    {% endfor %}
+
+    {% if prev_art %}
+      <a href="{{ prev_art.url | relative_url }}" class="artwork-nav-prev">
+        <i class="fa-solid fa-arrow-left"></i> Previous: {{ prev_art.title }}
+      </a>
+    {% endif %}
+
+    <a href="{{ '/portfolio/' | relative_url }}" class="artwork-nav-back">
+      <i class="fa-solid fa-th"></i> Back to Portfolio
+    </a>
+
+    {% if next_art %}
+      <a href="{{ next_art.url | relative_url }}" class="artwork-nav-next">
+        Next: {{ next_art.title }} <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    {% endif %}
+  </div>
+
+  {% if site.giscus and page.giscus_comments %}
+    {% include giscus.liquid %}
+  {% endif %}
+</div>
