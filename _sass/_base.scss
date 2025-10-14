@@ -46,7 +46,7 @@ table.table a {
 
   &:hover {
     color: var(--global-theme-color);
-    text-decoration: underline;
+    text-decoration: wavy underline;
   }
 
   &:hover:after :not(.nav-item.dropdown) {
@@ -412,13 +412,39 @@ ul.task-list input[type="checkbox"] {
   text-align: center;
 
   .contact-icons {
-    font-size: 2rem;
+    font-size: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    justify-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      margin: 0;
+      text-decoration: none;
+      
+      .social-text {
+        // margin-left: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--global-text-color);
+      }
+      
+      &:hover .social-text {
+        color: var(--global-theme-color);
+        // transition: color 0.2s ease-in-out;
+      }
+    }
 
     a {
+      margin: 0;
+      
       img {
         width: 3.2rem;
         height: 3.2rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
       }
 
       svg {
@@ -449,6 +475,141 @@ ul.task-list input[type="checkbox"] {
 
   .contact-note {
     font-size: 0.8rem;
+  }
+}
+
+// Footnote styles
+.footnotes {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  margin-left: 1.5rem;
+  // border-top: 2px solid var(--global-text-color);
+  // border-top-style: dashed;
+  
+  &::before {
+    content: "Notes";
+    display: block;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--global-theme-color);
+  }
+  
+  ol {
+    margin-left: 0rem;
+    padding-left: 2rem;
+    
+    li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      color: var(--global-text-color);
+      padding-left: 0;
+      
+      p {
+        margin: 0;
+        padding: 0.5rem 0;
+        padding-left: 2rem;
+      }
+    }
+  }
+}
+
+// Inline footnote reference styling
+a[href^="#fn:"] {
+  text-decoration: none;
+  color: var(--global-theme-color);
+  font-weight: 500;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  background-color: rgba(var(--global-theme-color-rgb), 0.1);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: rgba(var(--global-theme-color-rgb), 0.2);
+    transform: translateY(-1px);
+  }
+}
+
+// Tooltip styles
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  border-bottom: 1px dotted var(--global-text-color);
+  
+  .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: var(--global-bg-color);
+    color: var(--global-text-color);
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 12px;
+    position: absolute;
+    z-index: 1000;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: 1px solid var(--global-text-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    
+    // Arrow pointing down
+    &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: var(--global-text-color) transparent transparent transparent;
+    }
+  }
+  
+  &:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+// Alternative tooltip positioning (right side)
+.tooltip-right {
+  .tooltiptext {
+    top: -5px;
+    left: 110%;
+    bottom: auto;
+    margin-left: 0;
+    
+    &::after {
+      top: 50%;
+      left: -5px;
+      margin-top: -5px;
+      border-color: transparent var(--global-text-color) transparent transparent;
+    }
+  }
+}
+
+// Tooltip for left side
+.tooltip-left {
+  .tooltiptext {
+    top: -5px;
+    right: 110%;
+    left: auto;
+    bottom: auto;
+    margin-left: 0;
+    
+    &::after {
+      top: 50%;
+      right: -5px;
+      left: auto;
+      margin-top: -5px;
+      border-color: transparent transparent transparent var(--global-text-color);
+    }
   }
 }
 

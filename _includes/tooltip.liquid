@@ -1,0 +1,30 @@
+{% comment %}
+  Tooltip include for hover popups
+  
+  Usage:
+  {% include tooltip.liquid text="Your main text" tooltip="Your popup text" %}
+  {% include tooltip.liquid text="Your main text" tooltip="Your popup text" position="right" %}
+  {% include tooltip.liquid text="Your main text" tooltip="Your popup text" position="left" %}
+  
+  Parameters:
+  - text: The visible text that users will hover over
+  - tooltip: The popup text that appears on hover
+  - position: "top" (default), "right", or "left"
+{% endcomment %}
+
+{% if include.text and include.tooltip %}
+  {% assign position = include.position | default: "top" %}
+  {% assign tooltip_class = "tooltip" %}
+  {% if position == "right" %}
+    {% assign tooltip_class = "tooltip tooltip-right" %}
+  {% elsif position == "left" %}
+    {% assign tooltip_class = "tooltip tooltip-left" %}
+  {% endif %}
+
+  <span class="{{ tooltip_class }}">
+    {{ include.text }}
+    <span class="tooltiptext">{{ include.tooltip }}</span>
+  </span>
+{% else %}
+  <!-- Tooltip include missing parameters: text="{{ include.text }}" tooltip="{{ include.tooltip }}" -->
+{% endif %}

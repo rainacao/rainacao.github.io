@@ -36,6 +36,13 @@ layout: default
           <div class="more-info">{{ page.profile.more_info }}</div>
         {% endif %}
 
+        <!-- Social icons under profile picture -->
+        {% if page.social %}
+          <div class="social">
+            <div class="contact-icons">{% include social.liquid %}</div>
+          </div>
+        {% endif %}
+
       </div>
     {% endif %}
 
@@ -71,13 +78,9 @@ layout: default
       {% include recent_files.liquid %}
     {% endif %}
 
-    <!-- Social -->
-    {% if page.social %}
-      <div class="social">
-        <div class="contact-icons">{% include social.liquid %}</div>
-
-        <div class="contact-note">{{ site.contact_note }}</div>
-      </div>
+    <!-- Contact note (keeping this at bottom if it exists) -->
+    {% if site.contact_note %}
+      <div class="contact-note">{{ site.contact_note }}</div>
     {% endif %}
 
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}

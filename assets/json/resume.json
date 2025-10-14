@@ -33,7 +33,7 @@
       "summary": "Developed data-driven systems to collect, analyze, and visualize misinformation patterns from social media for public health surveillance.",
       "highlights": [
         "Built an automated web-scraping pipeline (Python, Selenium) to collect location- and keyword-specific posts from Instagram and X on a daily basis, with caching, rate-limit handling, and text parsing.",
-        "Cleaned and processed 10,000+ social media posts, creating geospatial visualizations of misinformation patterns for public health surveillance.",
+        "Cleaned and processed 5,000+ social media posts, creating geospatial visualizations of misinformation patterns for public health surveillance.",
         "Designed and evaluated misinformation classification systems using open-source LLMs and traditional ML models, benchmarking multiple preprocessing strategies.",
         "Delivered findings to supervisors and policymakers through reports and presentations, supporting data-driven decision making."
       ]
@@ -48,8 +48,8 @@
       "highlights": [
         "Automated data ingestion by scraping 200+ neuroscience events with Python/BeautifulSoup to update a widely used research website.",
         "Developed Python and Jupyter-based tools for image processing, vision tracking, and data parsing, supporting multiple neuroscience labs.",
-        "Created a collaboration visualization tool in Python/Jupyter that generated interactive figures for organizational reviews and remains in active use.",
-        "Improved reproducibility and infrastructure by migrating projects into Apptainer containers, documenting workflows, and training researchers on GitHub and OSF."
+        "Created a collaboration visualization tool in Python/Jupyter that generated figures for organizational reviews and remains in active use.",
+        "Improved reproducibility infrastructure by migrating projects into Apptainer containers, documenting workflows, and training researchers on GitHub and OSF."
       ]
     }
   ],
