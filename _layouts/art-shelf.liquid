@@ -3,41 +3,79 @@ layout: page
 ---
 {{ content }}
 
+<div class="art-portfolio">
+
 <!-- Filter Controls -->
 <div class="portfolio-filters">
-  <button class="filter-btn active" data-filter="all">All</button>
-  {% assign mediums = site.art | map: 'medium' | uniq | compact %}
-  {% for medium in mediums %}
-    <button class="filter-btn" data-filter="{{ medium | slugify }}">{{ medium }}</button>
-  {% endfor %}
-</div>
+  <!-- Medium Filters -->
+  <div class="filter-group">
+    <h3>Medium</h3>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter-type="medium" data-filter="all">all</button>
+      {% assign all_mediums = site.art | map: 'medium' | compact %}
+      {% assign downcase_mediums = '' | split: ',' %}
+      {% for medium in all_mediums %}
+        {% assign downcase_medium = medium | downcase %}
+        {% assign downcase_mediums = downcase_mediums | push: downcase_medium %}
+      {% endfor %}
+      {% assign unique_mediums = downcase_mediums | uniq %}
+      {% for medium in unique_mediums %}
+        <button class="filter-btn" data-filter-type="medium" data-filter="{{ medium | slugify }}">{{ medium }}</button>
+      {% endfor %}
+    </div>
+  </div>
 
-{% if page.collection and page.collection.size > 0 %}
+  <!-- Category Filters -->
+  {% assign all_categories = site.art | map: 'categories' | compact | flatten %}
+  {% assign downcase_categories = '' | split: ',' %}
+  {% for category in all_categories %}
+    {% assign downcase_category = category | downcase %}
+    {% assign downcase_categories = downcase_categories | push: downcase_category %}
+  {% endfor %}
+  {% assign unique_categories = downcase_categories | uniq %}
+  {% if unique_categories.size > 0 %}
+  <div class="filter-group">
+    <h3>Categories</h3>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter-type="category" data-filter="all">all</button>
+      {% for category in unique_categories %}
+        <button class="filter-btn" data-filter-type="category" data-filter="{{ category | slugify }}">{{ category }}</button>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  
+  <!-- Tag Filters -->
+  <!--{% assign all_tags = site.art | map: 'tags' | compact | flatten | uniq %}
+  {% if all_tags.size > 0 %}
+  <div class="filter-group">
+    <h3>Tags</h3>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter-type="tag" data-filter="all">All</button>
+      {% for tag in all_tags %}
+        <button class="filter-btn" data-filter-type="tag" data-filter="{{ tag | downcase | slugify }}">{{ tag | downcase }}</button>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</div>-->
+
+<div class="art-grid">
+{% assign year = '' %}
   {% assign collection = site[page.collection] %}
   {% if collection and collection.size > 0 %}
-    {% assign sorted_collection = collection | sort: 'date' | reverse %}
-    {% assign year = '' %}
+    {% assign sorted_collection = collection | sort: "date" | reverse %}
     {% for item in sorted_collection %}
-      {% if item.year %}
-        {% assign current_year = item.year %}
-      {% elsif item.date %}
-        {% assign current_year = item.date | date: '%Y' %}
-      {% else %}
-        {% assign current_year = 'Unknown' %}
-      {% endif %}
-      
+      {% assign current_year = item.date | date: "%Y" %}
       {% if current_year != year %}
-        {% unless forloop.first %}
-          </div>
-        {% endunless %}
-         <h1>
-           {{current_year}}
-         </h1>
-        <div class="artwork-grid-year">
-          {% assign year = current_year %}
+        <h1>{{ current_year }}</h1>
+        {% assign year = current_year %}
       {% endif %}
-
-      <figure class="artwork-cover" data-medium="{{ item.medium | slugify | default: 'unknown' }}">
+      <figure class="artwork-cover" 
+              data-medium="{{ item.medium | downcase | slugify | default: 'unknown' }}"
+              data-categories="{% if item.categories %}{% for category in item.categories %}{{ category | downcase | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}"
+              data-tags="{% if item.tags %}{% for tag in item.tags %}{{ tag | downcase | slugify }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}">
         <a class="artwork-link" href="{{ item.url | relative_url }}">
           {% if item.image %}
             {% if item.image contains 'assets/img/' %}
@@ -55,195 +93,133 @@ layout: page
             <figcaption class="featured">FEATURED</figcaption>
           {% endif %}
         </a>
-        <div class="artwork-info">
-          <h3 class="artwork-title">{{ item.title }}</h3>
-          {% if item.medium %}
-            <p class="artwork-medium">{{ item.medium }}</p>
-          {% endif %}
-          {% if item.category %}
-            <p class="artwork-category">{{ item.category }}</p>
-          {% endif %}
-        </div>
       </figure>
-      {% if forloop.last %}
-        </div>
-      {% endif %}
     {% endfor %}
   {% endif %}
-{% endif %}
-
-<style>
-/* Filter Controls */
-.portfolio-filters {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--global-divider-color);
-}
-
-.filter-btn {
-  background: var(--global-bg-color);
-  border: 1px solid var(--global-divider-color);
-  color: var(--global-text-color);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-}
-
-.filter-btn:hover {
-  background: var(--global-theme-color);
-  color: var(--global-bg-color);
-  border-color: var(--global-theme-color);
-}
-
-.filter-btn.active {
-  background: var(--global-theme-color);
-  color: var(--global-bg-color);
-  border-color: var(--global-theme-color);
-}
-
-.artwork-grid-year {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-.artwork-cover {
-  text-align: center;
-  margin: 0;
-}
-
-.artwork-cover img {
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.artwork-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-.artwork-link:hover {
-  text-decoration: none;
-  color: inherit;
-}
-
-.artwork-cover figcaption {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background: var(--global-theme-color);
-  color: var(--global-bg-color);
-  padding: 0.3rem 0.6rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: bold;
-}
-
-.artwork-info {
-  margin-top: 0.5rem;
-  text-align: center;
-}
-
-.artwork-title {
-  font-size: 1rem;
-  margin: 0 0 0.25rem 0;
-  color: var(--global-text-color);
-}
-
-.artwork-medium,
-.artwork-category {
-  font-size: 0.8rem;
-  margin: 0;
-  color: var(--global-text-color-light);
-}
-
-.artwork-placeholder {
-  border: 2px dashed var(--global-divider-color);
-  border-radius: 8px;
-}
-
-@media (max-width: 768px) {
-  .artwork-grid-year {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 1rem;
-  }
-  
-  .portfolio-filters .filter-btn {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.8rem;
-  }
-}
-</style>
+  </div>
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // Filter functionality
   const filterButtons = document.querySelectorAll('.filter-btn');
   const artworkItems = document.querySelectorAll('.artwork-cover');
-  const yearSections = document.querySelectorAll('h1[id^="y"]');
+  const yearHeaders = document.querySelectorAll('.art-grid h1');
+
+  // Track active filters for each type
+  let activeFilters = {
+    medium: 'all',
+    category: 'all',
+    tag: 'all'
+  };
+
+  function updateActiveButtons(filterType, filterValue) {
+    // Update active button for the specific filter type
+    const buttonsOfType = document.querySelectorAll(`[data-filter-type="${filterType}"]`);
+    buttonsOfType.forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.getAttribute('data-filter') === filterValue) {
+        btn.classList.add('active');
+      }
+    });
+  }
+
+  function shouldShowItem(item) {
+    // Check medium filter
+    if (activeFilters.medium !== 'all') {
+      const itemMedium = item.getAttribute('data-medium');
+      if (itemMedium !== activeFilters.medium) {
+        return false;
+      }
+    }
+
+    // Check category filter
+    if (activeFilters.category !== 'all') {
+      const itemCategories = item.getAttribute('data-categories');
+      if (!itemCategories || !itemCategories.split(',').includes(activeFilters.category)) {
+        return false;
+      }
+    }
+
+    // Check tag filter
+    if (activeFilters.tag !== 'all') {
+      const itemTags = item.getAttribute('data-tags');
+      if (!itemTags || !itemTags.split(',').includes(activeFilters.tag)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  function updateYearHeaders() {
+    yearHeaders.forEach(header => {
+      // Count visible artwork in this year section
+      let visibleArtwork = 0;
+      let currentElement = header.nextElementSibling;
+      
+      // Count artwork until we hit the next year header or end of grid
+      while (currentElement && currentElement.tagName !== 'H1') {
+        if (currentElement.classList.contains('artwork-cover') && 
+            currentElement.style.display !== 'none' && 
+            currentElement.style.opacity !== '0') {
+          visibleArtwork++;
+        }
+        currentElement = currentElement.nextElementSibling;
+      }
+      
+      // Show/hide year header based on visible artwork
+      if (visibleArtwork === 0) {
+        header.style.display = 'none';
+      } else {
+        header.style.display = 'block';
+      }
+    });
+  }
+
+  function applyFilters() {
+    // Use requestAnimationFrame for smoother animations
+    requestAnimationFrame(() => {
+      artworkItems.forEach(item => {
+        const shouldShow = shouldShowItem(item);
+        
+        if (shouldShow) {
+          item.style.display = 'block';
+          item.style.opacity = '0';
+          item.style.transition = 'opacity 0.2s ease';
+          requestAnimationFrame(() => {
+            item.style.opacity = '1';
+          });
+        } else {
+          item.style.opacity = '0';
+          item.style.transition = 'opacity 0.2s ease';
+          setTimeout(() => {
+            if (item.style.opacity === '0') {
+              item.style.display = 'none';
+            }
+          }, 200);
+        }
+      });
+      
+        // Update year headers after a delay to allow opacity transitions
+        setTimeout(updateYearHeaders, 250);
+    });
+  }
 
   if (filterButtons.length > 0 && artworkItems.length > 0) {
     filterButtons.forEach(button => {
       button.addEventListener('click', function() {
-        const filter = this.getAttribute('data-filter');
+        const filterType = this.getAttribute('data-filter-type');
+        const filterValue = this.getAttribute('data-filter');
         
-        // Update active button
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        this.classList.add('active');
+        // Update active filters
+        activeFilters[filterType] = filterValue;
         
-        // Use requestAnimationFrame for smoother animations
-        requestAnimationFrame(() => {
-          // Filter artwork items with smoother transitions
-          artworkItems.forEach(item => {
-            const shouldShow = filter === 'all' || item.getAttribute('data-medium') === filter;
-            
-            if (shouldShow) {
-              item.style.display = 'block';
-              item.style.opacity = '0';
-              item.style.transition = 'opacity 0.2s ease';
-              requestAnimationFrame(() => {
-                item.style.opacity = '1';
-              });
-            } else {
-              item.style.opacity = '0';
-              item.style.transition = 'opacity 0.2s ease';
-              setTimeout(() => {
-                if (item.style.opacity === '0') {
-                  item.style.display = 'none';
-                }
-              }, 200);
-            }
-          });
-          
-          // Hide/show year headers based on visible artwork
-          setTimeout(() => {
-            yearSections.forEach(header => {
-              const yearGrid = header.nextElementSibling;
-              if (!yearGrid) return;
-              
-              // Count visible artwork in this year
-              const visibleArtwork = Array.from(yearGrid.querySelectorAll('.artwork-cover')).filter(item => {
-                return item.style.display !== 'none' && item.style.opacity !== '0';
-              });
-              
-              if (visibleArtwork.length === 0) {
-                header.style.display = 'none';
-                yearGrid.style.display = 'none';
-              } else {
-                header.style.display = 'block';
-                yearGrid.style.display = 'block';
-              }
-            });
-          }, 250); // Wait for opacity transitions to complete
-        });
+        // Update active buttons
+        updateActiveButtons(filterType, filterValue);
+        
+        // Apply filters
+        applyFilters();
       });
     });
   }

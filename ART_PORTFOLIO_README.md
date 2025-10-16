@@ -1,5 +1,7 @@
 # Art Portfolio System for Jekyll al-folio
 
+> FULL DISCLAIMER: cursor.ai came up with all of this as a starting point. i think it's cute how it has certain "tastes" reflective of its training data, with a random assortment of ~surreal~ and ~techy~ themes. there's a lot of manual tweaking and undoing that i've done.
+
 This system adds a comprehensive art portfolio to your Jekyll site based on al-folio theme.
 
 ## Features

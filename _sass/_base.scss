@@ -45,13 +45,18 @@ table.table a {
   color: var(--global-theme-color);
 
   &:hover {
-    color: var(--global-theme-color);
+    color: var(--global-hover-color);
     text-decoration: wavy underline;
   }
 
   &:hover:after :not(.nav-item.dropdown) {
     width: 100%;
   }
+}
+
+a em,
+a strong {
+  color: inherit;
 }
 
 .table-dark {

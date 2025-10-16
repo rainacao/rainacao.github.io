@@ -56,55 +56,57 @@ layout: default
     <!-- Artwork Description -->
     {% if page.description %}
       <div class="artwork-description">
-        <h2>Description</h2>
+        <h2>About this artwork</h2>
         <p>{{ page.description }}</p>
       </div>
     {% endif %}
 
     <!-- Artwork Details -->
-    <div class="artwork-details">
-      {% if page.techniques %}
-        <div class="artwork-detail-section">
-          <h3><i class="fa-solid fa-tools fa-sm"></i> Techniques</h3>
-          <ul>
-            {% for technique in page.techniques %}
-              <li>{{ technique }}</li>
+    {% if page.techniques or page.software or page.exhibition or page.availability %}
+      <div class="artwork-details">
+        {% if page.techniques %}
+          <div class="artwork-detail-section">
+            <h3><i class="fa-solid fa-tools fa-sm"></i> Techniques</h3>
+            <ul>
+              {% for technique in page.techniques %}
+                <li>{{ technique }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        {% if page.software %}
+          <div class="artwork-detail-section">
+            <h3><i class="fa-solid fa-laptop fa-sm"></i> Software</h3>
+            <ul>
+              {% for software in page.software %}
+                <li>{{ software }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        {% if page.exhibition %}
+          <div class="artwork-detail-section">
+            <h3><i class="fa-solid fa-building fa-sm"></i> Exhibition</h3>
+            {% for exhibition in page.exhibition %}
+              <div class="exhibition-item">
+                <strong>{{ exhibition.name }}</strong><br>
+                {{ exhibition.venue }}, {{ exhibition.location }}<br>
+                <em>{{ exhibition.date | date: '%B %d, %Y' }}</em>
+              </div>
             {% endfor %}
-          </ul>
-        </div>
-      {% endif %}
+          </div>
+        {% endif %}
 
-      {% if page.software %}
-        <div class="artwork-detail-section">
-          <h3><i class="fa-solid fa-laptop fa-sm"></i> Software</h3>
-          <ul>
-            {% for software in page.software %}
-              <li>{{ software }}</li>
-            {% endfor %}
-          </ul>
-        </div>
-      {% endif %}
-
-      {% if page.exhibition %}
-        <div class="artwork-detail-section">
-          <h3><i class="fa-solid fa-building fa-sm"></i> Exhibition</h3>
-          {% for exhibition in page.exhibition %}
-            <div class="exhibition-item">
-              <strong>{{ exhibition.name }}</strong><br>
-              {{ exhibition.venue }}, {{ exhibition.location }}<br>
-              <em>{{ exhibition.date | date: '%B %d, %Y' }}</em>
-            </div>
-          {% endfor %}
-        </div>
-      {% endif %}
-
-      {% if page.availability %}
-        <div class="artwork-detail-section">
-          <h3><i class="fa-solid fa-info-circle fa-sm"></i> Availability</h3>
-          <p>{{ page.availability }}{% if page.price %} - {{ page.price }}{% endif %}</p>
-        </div>
-      {% endif %}
-    </div>
+        {% if page.availability %}
+          <div class="artwork-detail-section">
+            <h3><i class="fa-solid fa-info-circle fa-sm"></i> Availability</h3>
+            <p>{{ page.availability }}{% if page.price %} - {{ page.price }}{% endif %}</p>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
 
     <!-- Related Blog Posts -->
     {% if page.blog_posts %}

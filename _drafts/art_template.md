@@ -1,12 +1,12 @@
 ---
 layout: art
 title: "Drawing"
-image: "assets/img/art/IMG_1786.jpg"
-year: 2023
-medium: Digital
+image: "assets/img/IMG_1788.jpg"
+year: 2025
+medium: Traditional
 description:
 tags:
-category: 
+categories: 
 featured: false
 blog_posts:
 ---
