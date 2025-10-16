@@ -9,19 +9,19 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-portfolio",
-          title: "portfolio",
+  },{id: "nav-blog",
+          title: "blog",
           description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/portfolio/";
+            window.location.href = "/blog/";
           },
-        },{id: "nav-cv",
-          title: "cv",
-          description: "curriculum vitae",
+        },{id: "nav-art",
+          title: "art",
+          description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/cv/";
+            window.location.href = "/art/";
           },
         },{id: "nav-research",
           title: "research",
@@ -30,69 +30,209 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/research/";
           },
-        },{id: "dropdown-projects",
-              title: "projects",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "/projects/";
-              },
-            },{id: "dropdown-blog",
-              title: "blog",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "/blog/";
-              },
-            },{id: "dropdown-bookshelf",
-              title: "bookshelf",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "/books/";
-              },
-            },{id: "post-creating-art-from-digital-dreams",
+        },{id: "nav-bookshelf",
+          title: "bookshelf",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/books/";
+          },
+        },{id: "post-testing-testing-123",
         
-          title: "Creating Art from Digital Dreams",
+          title: "testing testing 123",
         
-        description: "A behind-the-scenes look at how I created my latest digital artwork and the process of integrating it into my portfolio.",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2025/art-integration-example/";
-          
-        },
-      },{id: "post-my-test-post",
-        
-          title: "my test post",
-        
-        description: "my test description",
+        description: "is this thing on?",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/2025/testing/";
           
         },
-      },{id: "art-drawing",
-          title: 'Drawing',
+      },{id: "art-lovelive-001",
+          title: 'Lovelive_001',
           description: "",
           section: "Art",handler: () => {
-              window.location.href = "/portfolio/example-artwork-copy-2/";
-            },},{id: "art-drawing",
-          title: 'Drawing',
+              window.location.href = "/art/2019/lovelive_001/";
+            },},{id: "art-obs-001",
+          title: 'Obs_001',
           description: "",
           section: "Art",handler: () => {
-              window.location.href = "/portfolio/example-artwork-copy-3/";
-            },},{id: "art-drawing",
-          title: 'Drawing',
+              window.location.href = "/art/2019/obs_001/";
+            },},{id: "art-obs-002",
+          title: 'Obs_002',
           description: "",
           section: "Art",handler: () => {
-              window.location.href = "/portfolio/example-artwork-copy-4/";
-            },},{id: "art-drawing",
-          title: 'Drawing',
+              window.location.href = "/art/2019/obs_002/";
+            },},{id: "art-obs-003",
+          title: 'Obs_003',
           description: "",
           section: "Art",handler: () => {
-              window.location.href = "/portfolio/example-artwork-copy/";
+              window.location.href = "/art/2019/obs_003/";
+            },},{id: "art-original-001-1",
+          title: 'Original_001 1',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2019/original_001-1/";
+            },},{id: "art-crimeandpunishment1",
+          title: 'Crimeandpunishment1',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2020/crimeandpunishment1/";
+            },},{id: "art-ghibli1",
+          title: 'Ghibli1',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2020/ghibli1/";
+            },},{id: "art-kon1",
+          title: 'Kon1',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2020/kon1/";
+            },},{id: "art-lain1",
+          title: 'Lain1',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2020/lain1/";
+            },},{id: "art-nana1",
+          title: 'Nana1',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2020/nana1/";
+            },},{id: "art-original4",
+          title: 'Original4',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2020/original4/";
+            },},{id: "art-pmmm5-2020",
+          title: 'Pmmm5 2020',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2020/pmmm5-2020/";
+            },},{id: "art-pmmm7-2020",
+          title: 'Pmmm7 2020',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2020/pmmm7-2020/";
+            },},{id: "art-pmmm9",
+          title: 'Pmmm9',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2020/pmmm9/";
+            },},{id: "art-shrek1",
+          title: 'Shrek1',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2020/shrek1/";
+            },},{id: "art-toloveyou-001-001",
+          title: 'Toloveyou_001 001',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2020/toloveyou_001-001/";
+            },},{id: "art-art1",
+          title: 'Art1',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2021/art1/";
+            },},{id: "art-original2-vrgallery",
+          title: 'Original2_vrgallery',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2021/original2_vrgallery/";
+            },},{id: "art-original3",
+          title: 'Original3',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2021/original3/";
+            },},{id: "art-original-004",
+          title: 'Original_004',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2021/original_004/";
+            },},{id: "art-persona-001",
+          title: 'Persona_001',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2021/persona_001/";
+            },},{id: "art-pmmm5-2021",
+          title: 'Pmmm5 2021',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2021/pmmm5-2021/";
+            },},{id: "art-pmmm6",
+          title: 'Pmmm6',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2021/pmmm6/";
+            },},{id: "art-pmmm7-2021",
+          title: 'Pmmm7 2021',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2021/pmmm7-2021/";
+            },},{id: "art-pmmm8",
+          title: 'Pmmm8',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2021/pmmm8/";
+            },},{id: "art-ubyssey-001",
+          title: 'Ubyssey_001',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2021/ubyssey_001/";
+            },},{id: "art-fiction1",
+          title: 'Fiction1',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2022/fiction1/";
+            },},{id: "art-guiltygear1",
+          title: 'Guiltygear1',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2022/guiltygear1/";
+            },},{id: "art-pmmm2",
+          title: 'Pmmm2',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2022/pmmm2/";
+            },},{id: "art-pmmm3",
+          title: 'Pmmm3',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2022/pmmm3/";
+            },},{id: "art-pmmm4",
+          title: 'Pmmm4',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2022/pmmm4/";
+            },},{id: "art-wadanohara1-rpgmzine",
+          title: 'Wadanohara1 Rpgmzine',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2022/wadanohara1-rpgmzine/";
+            },},{id: "art-wadanohara2",
+          title: 'Wadanohara2',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2022/wadanohara2/";
+            },},{id: "art-barbie",
+          title: 'Barbie',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2023/barbie/";
+            },},{id: "art-madoka1",
+          title: 'Madoka1',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2023/madoka1/";
+            },},{id: "art-utena2",
+          title: 'Utena2',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2023/utena2/";
+            },},{id: "art-utena1",
+          title: 'Utena1',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2024/utena1/";
             },},{id: "books-seven-nights",
           title: 'Seven Nights',
           description: "",
