@@ -211,6 +211,7 @@ ul.task-list input[type="checkbox"] {
     // font-family: monospace;
 
     p {
+      text-transform: none;
       display: inline-block;
       margin: 0;
     }
@@ -245,7 +246,7 @@ ul.task-list input[type="checkbox"] {
     color: inherit;
 
     &:hover {
-      color: var(--global-theme-color);
+      color: var(--global-hover-color);
       text-decoration: none;
     }
   }
@@ -416,74 +417,184 @@ ul.task-list input[type="checkbox"] {
 .social {
   text-align: center;
 
-    .contact-icons {
-      font-size: 1rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.5rem;
-      justify-items: center;
-      max-width: 400px;
-      margin: 0 auto;
-
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      margin: 0;
-      text-decoration: none;
-      
-      .social-text {
-        margin-left: 0.5rem;
-        font-size: 0.9rem;
-        color: var(--global-text-color);
-      }
-      
-      &:hover .social-text {
-        color: var(--global-theme-color);
-        // transition: color 0.2s ease-in-out;
-      }
-    }
-
-    a {
-      margin: 0;
-      
-      img {
-        width: 3.2rem;
-        height: 3.2rem;
-        margin-bottom: 0.5rem;
-      }
-
-      svg {
-        width: 3.5rem;
-        height: 4rem;
-        margin-bottom: 0.5rem;
-
-        image {
-          width: 3.5rem;
-          height: 3.5rem;
-        }
-      }
-
-      i::before {
-        color: var(--global-text-color);
-        transition-property: all 0.2s ease-in-out;
-      }
-
-      &:hover {
-        text-decoration: none;
-
-        i::before {
-          color: var(--global-theme-color);
-        }
-      }
-    }
+  .contact-icons {
+    display: grid;
+    grid-template-columns: 1fr;
+    // gap: 0.5rem;
+    justify-items: start;
+    max-width: 450px;
+    margin: 0 auto;
   }
 
-  .contact-note {
-    font-size: 0.8rem;
-  }
+  // .social-link {
+  //   display: inline-flex;
+  //   align-items: center;
+  //   margin: 0;
+  //   color: var(--global-theme-color);
+  //   // text-underline-offset: 0.12em;
+
+  //   img, svg {
+  //     width: 3.5rem;
+  //     height: 3.5rem;
+  //     margin-bottom: 0.5rem;
+  //   }
+
+  //   .social-text {
+  //     margin-left: 0.5rem;
+  //     font-size: 1rem;
+  //     /* no color here; let it inherit */
+  //   }
+
+  //   &:hover {
+  //     color: var(--global-hover-color);
+  //     /* keep underline style on hover */
+  //     // text-decoration-line: underline;
+  //     // text-decoration-style: wavy;
+  //   }
+  // }
 }
 
+// .social {
+//   text-align: center;
+
+//     .contact-icons {
+//       font-size: 1rem;
+//       display: grid;
+//       grid-template-columns: 1fr;
+//       gap: 0.5rem;
+//       justify-items: start;
+//       // justify-items: center;
+//       max-width: 450px;
+//       margin: 0 auto;
+
+//     .social-link {
+//       display: inline-flex;
+//       align-items: center;
+//       margin: 0;
+//       text-decoration: none;
+      
+//       .social-text {
+//         margin-left: 0.5rem;
+//         font-size: 1rem;
+//       }
+      
+//       &:hover {
+//         color: var(--global-hover-color);
+//         // transition: color 0.2s ease-in-out;
+//       }
+//     }
+
+//     a {
+//       margin: 0;
+//       color: var(--global-theme-color);
+      
+//       img {
+//         width: 3.5rem;
+//         height: 3.5rem;
+//         margin-bottom: 0.5rem;
+//         color: var(--global-theme-color);
+//       }
+
+//       svg {
+//         width: 3.5rem;
+//         height: 4rem;
+//         margin-bottom: 0.5rem;
+
+//         image {
+//           width: 3.5rem;
+//           height: 3.5rem;
+//         }
+//       }
+
+//       i::before {
+//         color: var(--global-theme-color);
+//         transition-property: all 0.2s ease-in-out;
+//       }
+
+//       &:hover {
+//         // text-decoration: none;
+//         color: var(--global-hover-color);
+
+//         // i::before {
+//         //   color: var(--global-theme-color);
+//         // }
+        
+//       }
+//     }
+  
+
+//   .contact-note {
+//     font-size: 0.8rem;
+//   }
+// }
+// }
+
 // Footnote styles
+// @media screen {
+//   .footnotes { display: none; }
+// }
+// @media print {
+//   .footnotes { display: block; }
+//   .footnote-popup { display: none !important; }
+// }
+
+// .footnote-wrap {
+//   position: relative;
+//   display: inline-block;
+//   line-height: 1;
+// }
+
+// .footnote-wrap > a {
+//   text-decoration: none;
+//   cursor: help;            /* shows “help” cursor on desktop */
+// }
+
+// /* The popup itself */
+// .footnote-popup {
+//   position: absolute;
+//   top: 1.4em;              /* below the reference */
+//   left: 0;
+//   z-index: 1000;
+//   max-width: min(80vw, 28rem);
+//   background: var(--popup-bg, #111);
+//   color: var(--popup-fg, #fff);
+//   border-radius: 0.5rem;
+//   padding: 0.7rem 0.8rem;
+//   box-shadow: 0 10px 24px rgba(0,0,0,.25);
+//   font-size: .9rem;
+//   line-height: 1.3;
+//   opacity: 0;
+//   transform: translateY(4px) scale(.98);
+//   pointer-events: none;
+//   transition: opacity .12s ease, transform .12s ease;
+// }
+
+// /* Show on hover/focus, or when JS toggles .is-open (mobile/click) */
+// .footnote-wrap:hover .footnote-popup,
+// .footnote-wrap:focus-within .footnote-popup,
+// .footnote-wrap.is-open .footnote-popup {
+//   opacity: 1;
+//   transform: translateY(0) scale(1);
+//   pointer-events: auto;
+// }
+
+// /* Make it tappable on touch devices */
+// @media (hover: none) {
+//   .footnote-wrap > a { cursor: pointer; }
+// }
+
+// /* Optional: small arrow */
+// .footnote-popup::before {
+//   content: "";
+//   position: absolute;
+//   top: -6px;
+//   left: 12px;
+//   border-width: 0 6px 6px 6px;
+//   border-style: solid;
+//   border-color: transparent transparent var(--popup-bg, #111) transparent;
+// }
+
+
 .footnotes {
   margin-top: 3rem;
   padding-top: 2rem;

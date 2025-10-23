@@ -36,24 +36,7 @@ layout: default
           <div class="more-info">{{ page.profile.more_info }}</div>
         {% endif %}
 
-        {% if page.cv_pdf %}
-        <div class="more-info">
-        <a
-            {% if page.cv_pdf contains '://' %}
-              href="{{ page.cv_pdf }}"
-            {% else %}
-              href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url }}"
-            {% endif %}
-            target="_blank"
-            rel="noopener noreferrer"
-            
-          >
-            curriculum vitae <i class="fa-solid fa-file-pdf"></i>
-          </a>
-       </div>
-        
 
-        {% endif %}
         
 
         <!-- Social icons under profile picture -->
@@ -63,6 +46,21 @@ layout: default
           </div>
           {% endif %}
 
+          {% if page.cv_pdf %}
+        <div class="more-info">
+        <a
+            {% if page.cv_pdf contains '://' %}
+              href="{{ page.cv_pdf }}"
+            {% else %}
+              href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url }}"
+            {% endif %}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fa-solid fa-file-pdf"></i> curriculum vitae
+          </a>
+       </div>
+        {% endif %}
       </div>
     {% endif %}
 
