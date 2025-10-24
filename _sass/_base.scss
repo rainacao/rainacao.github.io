@@ -207,8 +207,12 @@ ul.task-list input[type="checkbox"] {
 
   .more-info {
     margin-bottom: 5px;
-    margin-top: 5px;
+    // margin-top: 5px;
     // font-family: monospace;
+    i {
+      margin-top: 0.5em;
+      width: 2em;
+    }
 
     p {
       text-transform: none;
@@ -426,12 +430,17 @@ ul.task-list input[type="checkbox"] {
     margin: 0 auto;
   }
 
-  // .social-link {
-  //   display: inline-flex;
-  //   align-items: center;
-  //   margin: 0;
-  //   color: var(--global-theme-color);
-  //   // text-underline-offset: 0.12em;
+  .social-link {
+    // display: inline-flex;
+    align-items: center;
+    margin: 0;
+    color: var(--global-theme-color);
+    i {
+      margin-top: 0.5em;
+      width: 2em;
+    }
+  }
+    // text-underline-offset: 0.12em;
 
   //   img, svg {
   //     width: 3.5rem;

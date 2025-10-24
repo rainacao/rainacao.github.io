@@ -47,7 +47,8 @@ layout: default
           {% endif %}
 
           {% if page.cv_pdf %}
-        <div class="more-info">
+        <div class="social">
+        <div class="contact-icons">
         <a
             {% if page.cv_pdf contains '://' %}
               href="{{ page.cv_pdf }}"
@@ -56,9 +57,12 @@ layout: default
             {% endif %}
             target="_blank"
             rel="noopener noreferrer"
+            class="social-link"
           >
-            <i class="fa-solid fa-file-pdf"></i> curriculum vitae
+            <i class="fa-solid fa-file-pdf"></i> 
+            <span class="social-text">curriculum vitae</span>
           </a>
+       </div>
        </div>
         {% endif %}
       </div>
