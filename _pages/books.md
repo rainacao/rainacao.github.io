@@ -6,7 +6,7 @@ nav: true
 nav_order: 7
 collection: books
 ---
-I LOVE READING! I'm still working on this part of the site. In the meantime, feel free to check out [my Goodreads](https://www.goodreads.com/review/list/26205434-rai) with over 400 books and 100 reviews.
+I'm still working on this part of the site. In the meantime, feel free to check out [my Goodreads](https://www.goodreads.com/review/list/26205434-rai&sort=date_read) with over 400 books and 100 reviews.
 
 ## past and present reads
 
