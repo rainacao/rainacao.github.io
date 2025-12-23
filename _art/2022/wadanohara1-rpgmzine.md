@@ -5,5 +5,7 @@ date: 2022-01-01
 image: "assets/img/art/2022/wadanohara1-rpgmzine.jpg"
 medium: Digital
 categories:
-  - fan-art
+  - illustration
+  - personal/fanart/game
+  - published/zine
 ---

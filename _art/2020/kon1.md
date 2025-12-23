@@ -5,5 +5,6 @@ date: 2020-01-01
 image: "assets/img/art/2020/kon1.jpg"
 medium: Digital
 categories:
-  - fan-art
+  - personal/fanart/anime
+  - illustration
 ---

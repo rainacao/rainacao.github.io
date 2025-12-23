@@ -6,26 +6,10 @@ layout: page
 <div class="art-portfolio">
 
 <!-- Filter Controls -->
-<div class="portfolio-filters">
-  <!-- Medium Filters -->
-  <div class="filter-group">
-    <h3>Medium</h3>
-    <div class="filter-buttons">
-      <button class="filter-btn active" data-filter-type="medium" data-filter="all">all</button>
-      {% assign all_mediums = site.art | map: 'medium' | compact %}
-      {% assign downcase_mediums = '' | split: ',' %}
-      {% for medium in all_mediums %}
-        {% assign downcase_medium = medium | downcase %}
-        {% assign downcase_mediums = downcase_mediums | push: downcase_medium %}
-      {% endfor %}
-      {% assign unique_mediums = downcase_mediums | uniq %}
-      {% for medium in unique_mediums %}
-        <button class="filter-btn" data-filter-type="medium" data-filter="{{ medium | slugify }}">{{ medium }}</button>
-      {% endfor %}
-    </div>
-  </div>
 
-  <!-- Category Filters -->
+
+<div class="art-portfolio-layout">
+  <!-- Category Sidebar -->
   {% assign all_categories = site.art | map: 'categories' | compact | flatten %}
   {% assign downcase_categories = '' | split: ',' %}
   {% for category in all_categories %}
@@ -33,35 +17,148 @@ layout: page
     {% assign downcase_categories = downcase_categories | push: downcase_category %}
   {% endfor %}
   {% assign unique_categories = downcase_categories | uniq %}
-  {% if unique_categories.size > 0 %}
-  <div class="filter-group">
-    <h3>Categories</h3>
-    <div class="filter-buttons">
-      <button class="filter-btn active" data-filter-type="category" data-filter="all">all</button>
-      {% for category in unique_categories %}
-        <button class="filter-btn" data-filter-type="category" data-filter="{{ category | slugify }}">{{ category }}</button>
-      {% endfor %}
-    </div>
-  </div>
-  {% endif %}
-
   
-  <!-- Tag Filters -->
-  <!--{% assign all_tags = site.art | map: 'tags' | compact | flatten | uniq %}
-  {% if all_tags.size > 0 %}
-  <div class="filter-group">
-    <h3>Tags</h3>
-    <div class="filter-buttons">
-      <button class="filter-btn active" data-filter-type="tag" data-filter="all">All</button>
-      {% for tag in all_tags %}
-        <button class="filter-btn" data-filter-type="tag" data-filter="{{ tag | downcase | slugify }}">{{ tag | downcase }}</button>
-      {% endfor %}
+  {% comment %} Organize categories hierarchically {% endcomment %}
+  {% assign parent_categories = '' | split: ',' %}
+  {% assign category_map = '' | split: ',' %}
+  
+  {% for category in unique_categories %}
+    {% if category contains '/' %}
+      {% assign parts = category | split: '/' %}
+      {% assign parent = parts[0] %}
+      {% assign subcategory = category %}
+      
+      {% unless parent_categories contains parent %}
+        {% assign parent_categories = parent_categories | push: parent %}
+      {% endunless %}
+    {% else %}
+      {% unless parent_categories contains category %}
+        {% assign parent_categories = parent_categories | push: category %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+  
+  {% comment %} Sort parent categories alphabetically {% endcomment %}
+  {% assign parent_categories = parent_categories | sort %}
+  
+  {% comment %} Define color palette for parent categories {% endcomment %}
+  {% assign category_colors = '#3b82f6,#8b5cf6,#ec4899,#10b981,#06b6d4,#ef4444,#6366f1' | split: ',' %}
+  
+  {% comment %} Count artworks for each category {% endcomment %}
+  {% assign collection = site[page.collection] %}
+  {% assign all_count = 0 %}
+  {% if collection and collection.size > 0 %}
+    {% assign all_count = collection.size %}
+  {% endif %}
+  
+  {% if unique_categories.size > 0 %}
+  <div class="category-sidebar">
+    <div class="filter-group">
+      <h3>Categories</h3>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter-type="category" data-filter="all" data-filter-mode="exact" data-parent-category="">all ({{ all_count }})</button>
+        {% for parent in parent_categories %}
+          {% assign parent_index = forloop.index0 | modulo: category_colors.size %}
+          {% assign parent_color = category_colors[parent_index] %}
+          {% assign has_subcategories = false %}
+          {% for category in unique_categories %}
+            {% if category contains '/' %}
+              {% assign parts = category | split: '/' %}
+              {% if parts[0] == parent %}
+                {% assign has_subcategories = true %}
+                {% break %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          
+          {% comment %} Count artworks for parent category {% endcomment %}
+          {% assign parent_count = 0 %}
+          {% if collection and collection.size > 0 %}
+            {% for item in collection %}
+              {% assign item_matched = false %}
+              {% if item.categories %}
+                {% for item_category in item.categories %}
+                  {% assign item_cat_downcase = item_category | downcase %}
+                  {% if item_cat_downcase == parent %}
+                    {% assign item_matched = true %}
+                    {% break %}
+                  {% elsif item_cat_downcase contains '/' %}
+                    {% assign item_parts = item_cat_downcase | split: '/' %}
+                    {% if item_parts[0] == parent %}
+                      {% assign item_matched = true %}
+                      {% break %}
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              {% if item_matched %}
+                {% assign parent_count = parent_count | plus: 1 %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          
+          {% if has_subcategories %}
+            {% comment %} Parent category with subcategories - dropdown {% endcomment %}
+            <div class="category-dropdown">
+              <button class="filter-btn filter-btn-parent filter-btn-toggle" data-filter-type="category" data-filter="{{ parent | slugify }}" data-filter-mode="parent" data-parent-category="{{ parent | slugify }}" style="--category-color: {{ parent_color }};">
+                <span class="dropdown-arrow">▶</span>
+                <span class="category-text">{{ parent }} ({{ parent_count }})</span>
+              </button>
+              <div class="category-dropdown-content" style="display: none;">
+                {% comment %} Collect subcategories for this parent {% endcomment %}
+                {% assign parent_subcategories = '' | split: ',' %}
+                {% for category in unique_categories %}
+                  {% if category contains '/' %}
+                    {% assign parts = category | split: '/' %}
+                    {% if parts[0] == parent %}
+                      {% assign parent_subcategories = parent_subcategories | push: category %}
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+                {% comment %} Sort subcategories alphabetically {% endcomment %}
+                {% assign parent_subcategories = parent_subcategories | sort %}
+                {% for category in parent_subcategories %}
+                  {% assign parts = category | split: '/' %}
+                  {% comment %} Count artworks for this subcategory {% endcomment %}
+                  {% assign subcategory_count = 0 %}
+                  {% if collection and collection.size > 0 %}
+                    {% for item in collection %}
+                      {% if item.categories %}
+                        {% for item_category in item.categories %}
+                          {% assign item_cat_downcase = item_category | downcase %}
+                          {% if item_cat_downcase == category %}
+                            {% assign subcategory_count = subcategory_count | plus: 1 %}
+                            {% break %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                  {% comment %} Remove parent from display - show remaining parts with leading slash {% endcomment %}
+                  {% assign subcategory_parts = '' | split: ',' %}
+                  {% for i in (1..parts.size) %}
+                    {% assign idx = i | minus: 1 %}
+                    {% if idx > 0 %}
+                      {% assign subcategory_parts = subcategory_parts | push: parts[idx] %}
+                    {% endif %}
+                  {% endfor %}
+                  {% assign subcategory_display = subcategory_parts | join: '/' | prepend: '/' %}
+                  <button class="filter-btn filter-btn-subcategory" data-filter-type="category" data-filter="{{ category | slugify }}" data-filter-mode="exact" data-parent-category="{{ parent | slugify }}" style="--category-color: {{ parent_color }};">{{ subcategory_display }} ({{ subcategory_count }})</button>
+                {% endfor %}
+              </div>
+            </div>
+          {% else %}
+            {% comment %} Standalone category (no subcategories) {% endcomment %}
+            <button class="filter-btn" data-filter-type="category" data-filter="{{ parent | slugify }}" data-filter-mode="exact" data-parent-category="{{ parent | slugify }}" style="--category-color: {{ parent_color }};">{{ parent }} ({{ parent_count }})</button>
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
   </div>
   {% endif %}
-</div>-->
 
-<div class="art-grid">
+  <!-- Art Grid -->
+  <div class="art-grid">
 {% assign year = '' %}
   {% assign collection = site[page.collection] %}
   {% if collection and collection.size > 0 %}
@@ -106,6 +203,7 @@ layout: page
   {% endif %}
   </div>
 </div>
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -118,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let activeFilters = {
     medium: 'all',
     category: 'all',
+    categoryMode: 'exact',
     tag: 'all'
   };
 
@@ -144,8 +243,34 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check category filter
     if (activeFilters.category !== 'all') {
       const itemCategories = item.getAttribute('data-categories');
-      if (!itemCategories || !itemCategories.split(',').includes(activeFilters.category)) {
+      const filterMode = activeFilters.categoryMode || 'exact';
+      
+      if (!itemCategories) {
         return false;
+      }
+      
+      const categoryArray = itemCategories.split(',').filter(c => c.trim() !== '');
+      
+      if (filterMode === 'parent') {
+        // Parent mode: show all items with categories starting with parent/
+        // or exactly matching the parent
+        // Note: slugify converts "/" to "-", so we need to check for both
+        const parentSlug = activeFilters.category;
+        const matches = categoryArray.some(cat => {
+          const catSlug = cat.trim();
+          // Check if category is exactly the parent, or starts with parent/ or parent-
+          return catSlug === parentSlug || 
+                 catSlug.startsWith(parentSlug + '/') || 
+                 catSlug.startsWith(parentSlug + '-');
+        });
+        if (!matches) {
+          return false;
+        }
+      } else {
+        // Exact mode: show only items with exact category match
+        if (!categoryArray.includes(activeFilters.category)) {
+          return false;
+        }
       }
     }
 
@@ -216,12 +341,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (filterButtons.length > 0 && artworkItems.length > 0) {
     filterButtons.forEach(button => {
-      button.addEventListener('click', function() {
+      button.addEventListener('click', function(e) {
         const filterType = this.getAttribute('data-filter-type');
         const filterValue = this.getAttribute('data-filter');
+        const filterMode = this.getAttribute('data-filter-mode') || 'exact';
+        
+        // Handle dropdown toggle for parent categories
+        if (this.classList.contains('filter-btn-toggle')) {
+          const dropdown = this.closest('.category-dropdown');
+          const content = dropdown.querySelector('.category-dropdown-content');
+          const isExpanded = this.classList.contains('expanded');
+          
+          if (isExpanded) {
+            this.classList.remove('expanded');
+            content.style.display = 'none';
+          } else {
+            this.classList.add('expanded');
+            content.style.display = 'flex';
+          }
+        }
         
         // Update active filters
         activeFilters[filterType] = filterValue;
+        if (filterType === 'category') {
+          activeFilters.categoryMode = filterMode;
+        }
         
         // Update active buttons
         updateActiveButtons(filterType, filterValue);

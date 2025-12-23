@@ -5,7 +5,8 @@ date: 2024-01-01
 image: "assets/img/art/2024/utena1.jpg"
 medium: Digital
 categories:
-  - fan-art
+  - personal/fanart/anime
+  - illustration
 tags:
   - rgu
 ---

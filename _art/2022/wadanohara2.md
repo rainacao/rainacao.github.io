@@ -5,5 +5,5 @@ date: 2022-01-01
 image: "assets/img/art/2022/wadanohara2.jpg"
 medium: Digital
 categories:
-  - fan-art
+  - personal/fanart/game
 ---

@@ -5,7 +5,8 @@ date: 2019-01-01
 image: "assets/img/art/2019/lovelive_001.jpg"
 medium: digital
 categories:
-  - fan-art
+  - illustration
+  - personal/fanart/game
 tags:
   - love-live
 ---
