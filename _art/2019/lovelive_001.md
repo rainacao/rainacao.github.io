@@ -6,7 +6,7 @@ image: "assets/img/art/2019/lovelive_001.jpg"
 medium: digital
 categories:
   - illustration
-  - personal/fanart/game
+  - fanart/game
 tags:
-  - love-live
+  - llsif
 ---

@@ -100,11 +100,11 @@ layout: page
           {% if has_subcategories %}
             {% comment %} Parent category with subcategories - dropdown {% endcomment %}
             <div class="category-dropdown">
-              <button class="filter-btn filter-btn-parent filter-btn-toggle" data-filter-type="category" data-filter="{{ parent | slugify }}" data-filter-mode="parent" data-parent-category="{{ parent | slugify }}" style="--category-color: {{ parent_color }};">
+              <button class="filter-btn filter-btn-parent filter-btn-toggle expanded" data-filter-type="category" data-filter="{{ parent | slugify }}" data-filter-mode="parent" data-parent-category="{{ parent | slugify }}" style="--category-color: {{ parent_color }};">
                 <span class="dropdown-arrow">▶</span>
                 <span class="category-text">{{ parent }} ({{ parent_count }})</span>
               </button>
-              <div class="category-dropdown-content" style="display: none;">
+              <div class="category-dropdown-content" style="display: flex;">
                 {% comment %} Collect subcategories for this parent {% endcomment %}
                 {% assign parent_subcategories = '' | split: ',' %}
                 {% for category in unique_categories %}
@@ -188,6 +188,17 @@ layout: page
               </div>
             {% endif %}
             {% assign item_content = item.content | strip %}
+            {% assign has_images = false %}
+            {% if item_content != '' and item_content.size > 0 %}
+              {% if item_content contains '<img' or item_content contains '![[' or item_content contains '![' %}
+                {% assign has_images = true %}
+              {% endif %}
+            {% endif %}
+            {% if has_images %}
+              <div class="artwork-gallery-icon">
+                <i class="fa-solid fa-images"></i>
+              </div>
+            {% endif %}
             {% if item_content != '' and item_content.size > 0 %}
               <div class="artwork-comment-icon">
                 <i class="fa-solid fa-comment"></i>

@@ -147,6 +147,13 @@
       
       .category-text {
         flex: 1;
+        color: var(--category-color, var(--global-text-color));
+      }
+      
+      &.active {
+        .category-text {
+          color: var(--category-color, var(--global-theme-color));
+        }
       }
     }
 
@@ -183,7 +190,7 @@
 .art-grid {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 0.5rem;
   align-items: start;
 
@@ -249,6 +256,23 @@
     justify-content: center;
     background: var(--global-bg-color-alt);
     color: var(--global-text-color-light);
+  }
+
+  .artwork-gallery-icon {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    z-index: 10;
+    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
   .artwork-comment-icon {

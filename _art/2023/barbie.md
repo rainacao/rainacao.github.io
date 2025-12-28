@@ -5,5 +5,8 @@ date: 2023-01-01
 image: "assets/img/art/2023/barbie.jpg"
 medium: Digital
 categories:
-  - personal/fanart/movie
+  - fanart/movie
+  - illustration
+tags:
+  - sketch
 ---

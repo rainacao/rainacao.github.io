@@ -5,5 +5,6 @@ date: 2022-01-01
 image: "assets/img/art/2022/pmmm4.jpg"
 medium: Digital
 categories:
-  - personal/fanart/anime
+  - fanart/anime
+  - illustration
 ---

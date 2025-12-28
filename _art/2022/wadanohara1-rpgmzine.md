@@ -6,6 +6,6 @@ image: "assets/img/art/2022/wadanohara1-rpgmzine.jpg"
 medium: Digital
 categories:
   - illustration
-  - personal/fanart/game
-  - published/zine
+  - fanart/game
 ---
+Illustration as a part of [Phantasmagoria](https://rpgmzine.itch.io/phantasmagoria), a zine dedicated to RPGMaker games. 

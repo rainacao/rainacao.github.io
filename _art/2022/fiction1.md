@@ -5,6 +5,7 @@ date: 2022-01-01
 image: "assets/img/art/2022/fiction1.jpg"
 medium: Digital
 categories:
-  - personal/fanart/book
+  - fanart/book
   - illustration
 ---
+Inspired by Everything I Never Told You by Celeste Ng.
