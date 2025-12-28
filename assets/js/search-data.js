@@ -48,7 +48,42 @@ ninja.data = [{
             window.location.href = "/blog/2025/testing/";
           
         },
-      },{id: "art-lovelive-001",
+      },{id: "art-2019madoka",
+          title: '2019madoka',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2019/2019madoka/";
+            },},{id: "art-2019nrt",
+          title: '2019nrt',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2019/2019nrt/";
+            },},{id: "art-hq2",
+          title: 'Hq2',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2019/hq2/";
+            },},{id: "art-hq-wlw-zine",
+          title: 'Hq_wlw_zine',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2019/hq_wlw_zine/";
+            },},{id: "art-hxh1",
+          title: 'Hxh1',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2019/hxh1/";
+            },},{id: "art-hxh2",
+          title: 'Hxh2',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2019/hxh2/";
+            },},{id: "art-loveletter-001",
+          title: 'Loveletter_001',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2019/loveletter_001/";
+            },},{id: "art-lovelive-001",
           title: 'Lovelive_001',
           description: "",
           section: "Art",handler: () => {
@@ -68,11 +103,11 @@ ninja.data = [{
           description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/2019/obs_003/";
-            },},{id: "art-original-001-1",
-          title: 'Original_001 1',
+            },},{id: "art-pmmm2019",
+          title: 'Pmmm2019',
           description: "",
           section: "Art",handler: () => {
-              window.location.href = "/art/2019/original_001-1/";
+              window.location.href = "/art/2019/pmmm2019/";
             },},{id: "art-crimeandpunishment1",
           title: 'Crimeandpunishment1',
           description: "",
@@ -123,16 +158,36 @@ ninja.data = [{
           description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/2020/shrek1/";
-            },},{id: "art-toloveyou-001-001",
-          title: 'Toloveyou_001 001',
+            },},{id: "art-toloveyou-001",
+          title: 'Toloveyou_001',
           description: "",
           section: "Art",handler: () => {
-              window.location.href = "/art/2020/toloveyou_001-001/";
+              window.location.href = "/art/2020/toloveyou_001/";
+            },},{id: "art-2020-comic",
+          title: '2020_comic',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2020/2020_comic/";
+            },},{id: "art-eastvan",
+          title: 'Eastvan',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2020/eastvan/";
+            },},{id: "art-nrt-sketch",
+          title: 'Nrt_sketch',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2020/nrt_sketch/";
             },},{id: "art-art1",
           title: 'Art1',
           description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/2021/art1/";
+            },},{id: "art-hxh1",
+          title: 'Hxh1',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2021/hxh1/";
             },},{id: "art-original2-vrgallery",
           title: 'Original2_vrgallery',
           description: "",
@@ -173,6 +228,11 @@ ninja.data = [{
           description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/2021/pmmm8/";
+            },},{id: "art-selfportrait-2021",
+          title: 'Selfportrait_2021',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2021/selfportrait_2021/";
             },},{id: "art-ubyssey-001",
           title: 'Ubyssey_001',
           description: "",
@@ -213,6 +273,11 @@ ninja.data = [{
           description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/2022/wadanohara2/";
+            },},{id: "art-wadanohara3",
+          title: 'Wadanohara3',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2022/wadanohara3/";
             },},{id: "art-barbie",
           title: 'Barbie',
           description: "",
@@ -228,11 +293,26 @@ ninja.data = [{
           description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/2023/utena2/";
+            },},{id: "art-teto",
+          title: 'Teto',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2024/teto/";
             },},{id: "art-utena1",
           title: 'Utena1',
           description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/2024/utena1/";
+            },},{id: "art-sketchbook1",
+          title: 'Sketchbook1',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2025/sketchbook1/";
+            },},{id: "art-sketchbook2",
+          title: 'Sketchbook2',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/2025/sketchbook2/";
             },},{id: "books-seven-nights",
           title: 'Seven Nights',
           description: "",
