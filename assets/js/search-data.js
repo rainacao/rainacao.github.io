@@ -37,6 +37,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
+        },{id: "nav-projects",
+          title: "projects",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
         },{id: "post-testing-testing-123",
         
           title: "testing testing 123",
@@ -321,7 +328,12 @@ ninja.data = [{
             },},{id: "news-",
           title: '',
           description: "",
-          section: "News",},{
+          section: "News",},{id: "projects-painting-exercises-values",
+          title: 'painting exercises — values',
+          description: "an interactive tool for practicing value studies in painting",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/painting-exercises/";
+            },},{
         id: 'social-email',
         title: 'email',
         section: 'Socials',
