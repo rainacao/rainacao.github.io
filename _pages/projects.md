@@ -3,18 +3,16 @@ layout: page
 title: projects
 permalink: /projects/
 description: 
-nav: false
-nav_order: 2
-display_categories: [work, fun]
+nav: true
+nav_order: 7
+display_categories: [tinkering]
 horizontal: false
 ---
 > "If you accomplish something good with hard work, the labor passes quickly, but the good endures."
 > -- Gaius Musonius Rufus
 
-Working on it.
-
 <!-- ![Drawing of a penguin with a hard hat.](assets/img/IMG_1787.jpg) -->
-<img src="{{site.baseurl}}/assets/img/IMG_1787.jpg">
+<!-- <img src="{{site.baseurl}}/assets/img/IMG_1787.jpg"> -->
 
 <!-- pages/projects.md -->
 <div class="projects">
