@@ -35,9 +35,11 @@ current_reads:
 ---
 
 
-Nice to meet you! My name is Raina 雨童[^yutong] Cao and this is my workspace. I am an artist and researcher interested in **Human-Computer Interaction**, **Augmented Reality**, and **Generative AI**. I am at heart a creator, in various flavors and combinations of programming, writing, drawing, and occasionally fiber-crafting. 
+Nice to meet you! My name is Raina 雨童[^yutong] Cao and this is my workspace. I am an artist and researcher interested in **Human-Computer Interaction**, **Augmented Reality**, and **Creative Technologies**. I am at heart a creator, in various flavors and combinations of programming, writing, drawing, and occasionally fiber-crafting. 
 
-I'm interested in how artificial intelligence can support human intelligence.
+I'm interested in how artificial intelligence can support human creativity and cognition.
+
+I am currently a PhD student at UNC-Chapel Hill, advised by [Dr. Danielle Szafir](https://danielleszafir.com/) as part of the [VisuaLab](https://unc-visualab.org/). Previously, I was mentored by [Dr. Alexandra Kitson](https://vixi.cs.uvic.ca/people/alexandra-kitson-2025-09-18/) at the University of Victoria, and by the [Murphy Lab](https://murphylab.med.ubc.ca/) at the UBC Djavad Mowafaghian Centre for Brain Health.
 
 In my free time, I like to read, visit birding spots, and spend time with loved ones.
 
